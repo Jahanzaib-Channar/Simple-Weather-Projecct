@@ -2,5 +2,99 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: black;
+    /* background-color: black; */
+}
+
+.main { 
+
+    margin: 20px auto;
+    background-color: white;
+    height: 90vh;
+    box-shadow: 3px 3px 15px whitesmoke;
+    border: 1px solid rgba(0, 0, 0, 0.29);
+    border-radius: 15px;
+    padding: 15px 20px;
+}
+
+.main .search-box .search-inp{
+    padding:12px 30px;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.311);
+
+}
+
+.main .sec-container{
+    height: 50vh;
+    background: linear-gradient(to bottom , #90CAF9  , white);
+    border-radius: 15px;
+   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.311);
+   padding: 20px;
+   /* display: flex; */
+}
+
+.sec-container .location{
+    height: 18vh;
+    /* background-color: bisque; */
+    
+    padding: 20px;
+    
+}
+.location .city {
+    display: flex;
+    gap: 10px;
+}
+
+.location .city .icon {
+    font-size: 1.5rem;
+}
+
+.location .date {
+    font-weight: 600;
+    margin-left: 2.5rem;
+}
+.location .city > h3 {
+    
+    font-weight: 500;
+}
+.sec-container .inner{
+    display: flex;
+    gap: 20px;
+}
+
+.sec-container .inner .left{
+    height: 100%;
+    /* background-color: blueviolet; */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-right: 1px solid rgba(0, 0, 0, 0.32);
+}
+
+.inner .left .img{
+    width: 100%;
+    
+}
+
+.inner .left .temperature{
+    width: 100%;
+    /* font-size: 3rem; */
+    
+}
+
+.left .temperature >h1{
+    font-size: 5rem;
+    font-weight: 700;
+}
+.left .temperature h1 span{
+    font-size: 2.5rem;
+    
+}
+
+.left .temperature > p{
+    font-weight: 700;
+}
+
+.sec-container .inner .right{
+    height: 100%;
+
+    background-color: rgb(43, 226, 137);
 }
