@@ -1,11 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     /* background-color: black; */
 }
 
-.main { 
+.main {
 
     margin: 20px auto;
     background-color: white;
@@ -16,28 +16,30 @@
     padding: 15px 20px;
 }
 
-.main .search-box .search-inp{
-    padding:12px 30px;
+.main .search-box .search-inp {
+    padding: 12px 30px;
     box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.311);
 
 }
 
-.main .sec-container{
-    height: 50vh;
-    background: linear-gradient(to bottom , #90CAF9  , white);
+.main .sec-container {
+    max-height: 100%;
+    background: linear-gradient(to bottom, #90CAF9, white);
     border-radius: 15px;
-   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.311);
-   padding: 20px;
-   /* display: flex; */
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.311);
+    padding: 20px;
+    /* display: flex; */
 }
 
-.sec-container .location{
-    height: 18vh;
+.sec-container .location {
+    max-height: 100%;
     /* background-color: bisque; */
-    
-    padding: 20px;
-    
+
+    padding: 0px 20px;
+    margin-bottom: 30px;
+
 }
+
 .location .city {
     display: flex;
     gap: 10px;
@@ -51,17 +53,19 @@
     font-weight: 600;
     margin-left: 2.5rem;
 }
-.location .city > h3 {
-    
+
+.location .city>h3 {
+
     font-weight: 500;
 }
-.sec-container .inner{
+
+.sec-container .inner {
     display: flex;
     gap: 20px;
 }
 
-.sec-container .inner .left{
-    height: 100%;
+.sec-container .inner .left {
+    max-height: 100%;
     /* background-color: blueviolet; */
     display: flex;
     align-items: center;
@@ -69,32 +73,73 @@
     border-right: 1px solid rgba(0, 0, 0, 0.32);
 }
 
-.inner .left .img{
+.inner .left .img {
     width: 100%;
-    
+
 }
 
-.inner .left .temperature{
+.inner .left .temperature {
     width: 100%;
     /* font-size: 3rem; */
-    
+
 }
 
-.left .temperature >h1{
+.left .temperature>h1 {
     font-size: 5rem;
     font-weight: 700;
 }
-.left .temperature h1 span{
+
+.left .temperature h1 span {
     font-size: 2.5rem;
-    
+
 }
 
-.left .temperature > p{
+.left .temperature>p {
     font-weight: 700;
 }
 
-.sec-container .inner .right{
+.sec-container .inner .right {
     height: 100%;
 
-    background-color: rgb(43, 226, 137);
+    /* background-color: rgb(43, 226, 137); */
+
+    /* display: flex; */
+}
+
+.right .about-weather {
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.right .about-weather .condtion {
+    height: 48px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.326);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.condtion .condtion-left {
+    display: flex;
+    align-items: center;
+}
+
+
+.condtion .condtion-left .icon {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+
+}
+
+
+.right .about-weather .condtion-4 {
+    border-bottom: none;
 }
