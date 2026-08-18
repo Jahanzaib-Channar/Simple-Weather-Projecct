@@ -9,10 +9,9 @@ let unitTemp = document.querySelector(".unit")
 let Humatidy = document.querySelectorAll(".humidity")
 let WindSpeed = document.querySelectorAll(".windSpeed")
 let feelTem = document.querySelectorAll(".feellike")
-// let rainChance = document.querySelectorAll(".rainchance")
-
-
-
+let rainChance = document.querySelectorAll(".rain")
+let riseTime = document.querySelector(".riseTime")
+let setTime = document.querySelector(".setTime")
 
 
 // search city
@@ -20,6 +19,7 @@ let feelTem = document.querySelectorAll(".feellike")
 searchbtn.addEventListener("click", () => {
 
     let cityName = city.value
+    console.log(cityName)
 
     if (cityName == "") {
         console.log("city not found")
@@ -30,7 +30,7 @@ searchbtn.addEventListener("click", () => {
     city.value = ""
 })
 
-cityapi("Lahore");
+cityapi("Bahawalpur");
 
 // get city and checking cityy with help of API 
 async function cityapi(cityName) {
@@ -41,6 +41,7 @@ async function cityapi(cityName) {
 
         let cityfetch = await fetch(cityurl)
         let geodata = await cityfetch.json();
+        
         // console.log(geodata)
 
         let latitude = geodata.results[0].latitude
@@ -66,7 +67,7 @@ async function Weather(latitude, longitude, city, country) {
 
         // const url =
         //     `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m`
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,apparent_temperature,precipitation,rain,weather_code&timezone=auto&hourly=&daily=sunrise,sunset`
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,apparent_temperature,precipitation,rain,weather_code&timezone=auto&hourly=precipitation_probability&daily=sunrise,sunset,`
         let weatherData = await fetch(url)
 
         let data = await weatherData.json()
@@ -79,19 +80,20 @@ async function Weather(latitude, longitude, city, country) {
         let humitidy = data.current.relative_humidity_2m
         let wind = data.current.wind_speed_10m
         let feelTemp = data.current.apparent_temperature
-        let rainchnce = data.current.rain
+        let rainchnce = data.hourly.precipitation_probability[0]
+        let risetime = data.daily.sunrise[0].split("").slice(-5).join("")
+        let settime = data.daily.sunset[0].split("").slice(-5).join("")
 
         // Weather unit
         let unit = data.current_units.temperature_2m
         let humitidyUnit = data.current_units.relative_humidity_2m
         let windsped = data.current_units.wind_speed_10m
         let feelTempUnit = data.current_units.apparent_temperature
-        let rainChanceUnit = data.current_units.rain
-        // 
-        // 
-        console.log(rainchnce ,rainChanceUnit )
+        // let rainChanceUnit = data.current_units.rain
+        
+        // console.log(risetime , settime)
 
-        DataMapping(temp, unit, humitidy, humitidyUnit, wind, windsped, feelTemp, feelTempUnit, city, country)
+        DataMapping(temp, unit, humitidy, humitidyUnit, wind, windsped, feelTemp, feelTempUnit, city, country , rainchnce , risetime , settime)
 
     } catch (error) {
         console.log("error", error)
@@ -100,7 +102,7 @@ async function Weather(latitude, longitude, city, country) {
 
 /// Mapping Data
 
-function DataMapping(temp, unit, humitidy, humitidyUnit, wind, windsped, feelTemp, feelTempUnit,rainchnce,rainChanceUnit, city, country) {
+function DataMapping(temp, unit, humitidy, humitidyUnit, wind, windsped, feelTemp, feelTempUnit, city, country , rainchnce , risetime , settime) {
 
     // Get date day moth
     let getData = GetDate();
@@ -109,16 +111,20 @@ function DataMapping(temp, unit, humitidy, humitidyUnit, wind, windsped, feelTem
     // Location / city , country 
 
     locat.innerHTML = `${city} , ${country}`
+
     // Temperatue & unit 
+
     temperatue.innerHTML = temp
     unitTemp.innerHTML = unit
 
     // Humatidy & Unit 
+
     for (const element of Humatidy) {
         element.innerHTML = `${humitidy} ${humitidyUnit}`
     }
 
     // WindSpeed & unit 
+
     for (const element of WindSpeed) {
         element.innerHTML = `${wind} ${windsped}`
     }
@@ -127,9 +133,18 @@ function DataMapping(temp, unit, humitidy, humitidyUnit, wind, windsped, feelTem
     for (const element of feelTem) {
         element.innerHTML = `${feelTemp} ${feelTempUnit}`
     }
-    // for (const element of rainChance) {
-    //     element.innerHTML = `${rainchnce} ${rainChanceUnit}`
-    // }
+
+    // Rain Chance 
+
+    for (const element of rainChance) {
+
+        element.innerHTML = `${rainchnce}%`
+    }
+
+    // Sun-rise & Sun-set 
+
+    riseTime.innerHTML = risetime ; 
+    setTime.innerHTML = settime ;
 
 }
 
