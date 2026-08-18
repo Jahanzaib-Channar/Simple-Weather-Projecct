@@ -9,7 +9,7 @@
 
     margin: 20px auto;
     background-color: white;
-    height: 90vh;
+    height: 100%;
     box-shadow: 3px 3px 15px whitesmoke;
     border: 1px solid rgba(0, 0, 0, 0.29);
     border-radius: 15px;
@@ -72,24 +72,25 @@
     border-right: 1px solid rgba(0, 0, 0, 0.32);
 }
 
-.inner .left .img{
+.inner .left .img {
     width: 100%;
 }
 
-.inner .left .img img{
+.inner .left .img img {
     animation: rotate 30s linear 0s infinite;
 
 }
 
 @keyframes rotate {
 
-    0%{
+    0% {
         transform: rotate(0deg);
     }
-    100%{
+
+    100% {
         transform: rotate(360deg);
     }
-    
+
 }
 
 .inner .left .temperature {
@@ -155,6 +156,38 @@
     display: none;
 }
 
+.main .sunRiseSet {
+    width: 100%;
+    max-height: 100%;
+    display: flex;
+    /* justify-content: space-around; */
+
+    margin: 25px 0px;
+    gap: 20px;
+    /* border: 2px solid black; */
+    border-radius: 15px;
+    padding: 15px 0px;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.304);
+}
+
+.sunRiseSet .sun {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 0 auto;
+}
+
+.sunRiseSet .left-rise {
+    border-right: 1px solid rgba(0, 0, 0, 0.292);
+}
+
+.sun .detail .time {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
 @media (max-width:768px) {
     .sec-container .inner .right {
         height: 100%;
@@ -166,6 +199,7 @@
     }
 
     .tablet-condition {
+        height: 100%;
         display: block;
         display: grid;
         grid-template-rows: 1fr;
@@ -173,6 +207,7 @@
         max-height: 250px;
         margin-top: 30px;
         gap: 8px;
+        padding: 0px;
     }
 
     .tablet-condition .box {
@@ -186,15 +221,51 @@
         gap: 8px;
     }
 
+    .sunRiseSet .sun {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .sun .img img {
+        height: 60px !important;
+    }
+
+    .sun .detail .time {
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
 }
 
 @media (max-width:580px) {
 
     .tablet-condition {
+        max-height: 100%;
+
         /* display: block; */
         display: grid;
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
+    }
+
+    .sunRiseSet .sun {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .sun .img img {
+        height: 50px !important;
+    }
+
+    .sun .detail .time {
+        font-size: 1rem;
+        font-weight: 600;
     }
 
 }
@@ -206,14 +277,35 @@
         font-weight: 600;
 
     }
-    .inner .left .img img{
+
+    .inner .left .img img {
         height: 90px !important;
+    }
+    
+    .inner .left .img img {
+        height: 75px !important;
+    }
+
+    
+    .sunRiseSet .sun {
+        gap: 10px;
+    }
+
+    .sun .img img {
+        height: 40px !important;
+    }
+
+    .sun .detail .time {
+        font-size: 0.9rem;
+        font-weight: 600;
     }
 
 }
 
 @media (max-width:330px) {
     .tablet-condition {
+        max-height: 100%;
+
         /* display: block; */
         display: grid;
         grid-template-rows: 1fr;
@@ -225,7 +317,22 @@
         font-weight: 600;
 
     }
-        .inner .left .img img{
+
+    .inner .left .img img {
         height: 75px !important;
+    }
+
+    
+    .sunRiseSet .sun {        
+        gap: 10px;
+    }
+
+    .sun .img img {
+        height: 30px !important;
+    }
+
+    .sun .detail .time {
+        font-size: 0.9rem;
+        font-weight: 600;
     }
 }
